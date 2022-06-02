@@ -16,21 +16,39 @@ function App() {
   const [cardType, setCardType] = useState(null);
   const [cardIcon, setCardIcon] = useState(null);
   const [isValid, setIsValid] = useState(true);
+  const [placeHolder, setPlaceHolder] = useState("0000 0000 0000 0000");
 
   const validateCard = (e) => {
     let enterValue = e.target.value;
+    console.log({ placeHolder }, enterValue.replace(/ /g, "").length);
     if (/[^0-9-\s]+/.test(enterValue)) return false;
+    let addZero = "";
+    for (
+      let x = 0;
+      x < parseInt(16) - enterValue.replace(/ /g, "").length;
+      x++
+    ) {
+      addZero += 0;
+      // console.log({ x, addZero }, enterValue + addZero);
+    }
+
+    setPlaceHolder(
+      (enterValue + addZero)
+        .replace(/\W/gi, "")
+        .replace(/(.{4})/g, "$1 ")
+        .trim()
+    );
     setCardNumber(enterValue);
     getCardType(enterValue.replace(/ /g, ""));
   };
 
   useEffect(() => {
-    console.log({ cardNumber });
     if (cardNumber.length === 0) {
       setCardType(null);
       setCardIcon(null);
       setIsValid(true);
     }
+
     setCardNumber(
       cardNumber
         .replace(/\W/gi, "")
@@ -107,21 +125,36 @@ function App() {
           id="cardnumber"
           className="input"
           type="text"
-          inputMode="numeric"
-          mask="9999 9999 9999 9999"
           onChange={validateCard}
           value={cardNumber}
           autoComplete="off"
           onBlur={handleOnBlur}
           maxLength={19}
-          // placeholder="0000 0000 0000 0000"
         />
-        {cardType && isValid && <img className="ccicon" src={cardIcon} />}
+        <div
+          style={{
+            padding: "10px",
+            position: "absolute",
+            top: "11px",
+            left: "8px",
+            "font-size": "16px",
+            "font-family": "ui-serif",
+          }}
+        >
+          {placeHolder}
+        </div>
+        {cardType && isValid && (
+          <img alt="" className="ccicon" src={cardIcon} />
+        )}
         {!isValid && (
           <img
+            alt=""
             className="closeicon"
             src={closeIcon}
-            onClick={() => setCardNumber("")}
+            onClick={() => {
+              setCardNumber("");
+              setPlaceHolder("0000 0000 0000 0000");
+            }}
           />
         )}
         {!isValid && <span className="card-error">Invaild card number</span>}

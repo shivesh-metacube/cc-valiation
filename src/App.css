@@ -46,6 +46,7 @@ input {
   border-width: 2pt;
   border-image-slice: 1;
   box-shadow: 2px 12px 17px 5px #888;
+  font-family: ui-serif;
 }
 
 input:focus {
