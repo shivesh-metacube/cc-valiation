@@ -131,18 +131,7 @@ function App() {
           onBlur={handleOnBlur}
           maxLength={19}
         />
-        <div
-          style={{
-            padding: "10px",
-            position: "absolute",
-            top: "11px",
-            left: "8px",
-            "font-size": "16px",
-            "font-family": "ui-serif",
-          }}
-        >
-          {placeHolder}
-        </div>
+        <div className="placeholder-style">{placeHolder}</div>
         {cardType && isValid && (
           <img alt="" className="ccicon" src={cardIcon} />
         )}

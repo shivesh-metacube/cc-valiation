@@ -27,37 +27,8 @@ body {
   position: absolute;
 }
 
-.field-container input {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width:60vh
-}
-
 .field-container {
   position: relative;
-}
-
-input {
-  margin-top: 3px;
-  padding: 15px;
-  font-size: 16px;
-  border-radius: 3px;
-  border-image-source: linear-gradient(to right, #f36d9e 0, #01fff3 70%);
-  border-width: 2pt;
-  border-image-slice: 1;
-  box-shadow: 2px 12px 17px 5px #888;
-  font-family: ui-serif;
-}
-
-input:focus {
-  margin-top: 3px;
-  padding: 15px;
-  font-size: 16px;
-  border-radius: 3px;
-  border-image-source: linear-gradient(to right, #f36d9e 0, #01fff3 70%);
-  border-width: 2pt;
-  border-image-slice: 1;
-  box-shadow: 2px 12px 17px 5px #888;
 }
 
 .ccicon {
@@ -74,4 +45,46 @@ input:focus {
   right: 6px;
   top: calc(50% - 14px);
   width: 30px;
+}
+
+
+
+.placeholder-style{
+  margin-top: 3px;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border-style:solid;
+  border-image-source: linear-gradient(to right, #f36d9e 0, #01fff3 70%);
+  border-width: 2pt;
+  border-image-slice: 1;
+  box-shadow: 2px 12px 17px 5px #888;
+  font-family: ui-serif;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 60vh;
+  z-index: 1;
+  background: #fff;
+  color:#d3d3d3;
+}
+
+
+
+input {
+  border:none;
+  position: relative;
+  z-index: 0;
+  padding: 10px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 16px;
+  font-family: ui-serif;
+  background: transparent;
+  width: 45vh;
+}
+
+input:focus{
+  border:none;
+  outline: none;
 }
